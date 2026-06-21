@@ -1,63 +1,69 @@
 import { motion } from 'framer-motion';
 
+const SKILL_CATEGORIES = [
+  { title: 'Languages', skills: ['Java', 'Python', 'JavaScript', 'C/C++'] },
+  { title: 'Frontend', skills: ['React.js', 'Tailwind CSS', 'HTML/CSS'] },
+  { title: 'Backend', skills: ['Node.js', 'Express', 'PHP'] },
+  { title: 'Databases', skills: ['MySQL', 'PostgreSQL'] }
+];
+
 export const About = () => {
   return (
-    <section className="py-32 relative bg-[#0a0a0a]" id="about">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 grid lg:grid-cols-12 gap-16">
+    <section className="py-24 relative" id="about">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
         
-        <div className="lg:col-span-4">
-          <h2 className="text-sm font-medium tracking-[0.2em] uppercase text-gray-500 sticky top-32">
-            Expertise & Origin
-          </h2>
-        </div>
-
-        <div className="lg:col-span-8">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-            className="text-2xl md:text-4xl font-serif italic leading-relaxed text-[#CCCCCC] mb-16"
+            className="space-y-6"
           >
-            "A blend of academic rigor, technical agility, and a relentless problem-solving mindset."
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-6">
+              About & <span className="gradient-text">Expertise.</span>
+            </h2>
+            <div className="space-y-6 text-gray-400 text-base md:text-lg leading-relaxed font-sans">
+              <p>
+                I am a Computer Science Engineering student with hands-on experience in full-stack web development, database management, and software engineering principles. My background is rooted in a deep curiosity for how digital systems operate at scale.
+              </p>
+              <p>
+                I am passionate about building scalable applications, solving real-world problems, and continuously learning modern technologies. My approach blends an analytical problem-solving mindset with a dedication to collaborative teamwork and iterative development.
+              </p>
+            </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.76, 0, 0.24, 1] }}
-            className="space-y-8 text-gray-400 font-sans text-lg max-w-2xl"
+            className="grid sm:grid-cols-2 gap-4"
           >
-            <p>
-              I am a Computer Science Engineering student obsessed with the architecture of digital systems. My foundation is built on deep algorithmic understanding and scalable web development.
-            </p>
-            <p>
-              Whether engineering a relational database schema, deploying a seamless frontend, or fine-tuning a machine learning model, my approach remains deliberate: write clean, maintainable, and highly efficient code.
-            </p>
-          </motion.div>
-
-          {/* Minimalist Skills */}
-          <div className="mt-24 grid sm:grid-cols-2 gap-12">
-            {[
-              { title: 'Core', skills: 'Java, Python, JS, C++' },
-              { title: 'Frontend', skills: 'React, Tailwind, HTML/CSS' },
-              { title: 'Backend', skills: 'Node.js, Express, PHP' },
-              { title: 'Database & Tools', skills: 'MySQL, PostgreSQL, Git' }
-            ].map((cat, i) => (
+            {SKILL_CATEGORIES.map((category, index) => (
               <motion.div 
-                key={cat.title}
-                initial={{ opacity: 0, y: 20 }}
+                key={category.title}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3 + (i * 0.1), ease: [0.76, 0, 0.24, 1] }}
-                className="border-t border-white/10 pt-4"
+                transition={{ delay: index * 0.1 }}
+                className="glass-card p-6 rounded-2xl"
               >
-                <h4 className="text-white text-sm font-medium uppercase tracking-wider mb-2">{cat.title}</h4>
-                <p className="text-gray-500 font-serif italic">{cat.skills}</p>
+                <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center mb-4">
+                  <div className="w-4 h-4 rounded-full bg-gradient-to-tr from-accent to-purple-500" />
+                </div>
+                <h3 className="text-white font-display font-semibold mb-3">
+                  {category.title}
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {category.skills.map((skill) => (
+                    <span key={skill} className="text-xs font-medium text-gray-400 bg-white/5 px-2.5 py-1 rounded-md">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
 
         </div>
       </div>

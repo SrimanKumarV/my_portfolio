@@ -1,86 +1,74 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from 'framer-motion';
+import { ArrowRight, Download } from 'lucide-react';
 
 export const Hero = () => {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"]
-  });
-  
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, 200]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden" id="home">
+    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden" id="home">
       
-      <motion.div 
-        style={{ y: y1, opacity }}
-        className="w-full max-w-7xl mx-auto px-6 md:px-12 relative z-10 flex flex-col items-center justify-center text-center mt-20"
-      >
-        <div className="overflow-hidden mb-2">
-          <motion.div
-            initial={{ y: "100%" }}
-            animate={{ y: 0 }}
-            transition={{ duration: 1, delay: 0.2, ease: [0.76, 0, 0.24, 1] }}
-          >
-            <p className="text-gray-400 uppercase tracking-[0.3em] text-xs font-medium">Software Engineer</p>
-          </motion.div>
-        </div>
-
-        <div className="overflow-hidden">
-          <motion.h1
-            initial={{ y: "100%" }}
-            animate={{ y: 0 }}
-            transition={{ duration: 1.2, delay: 0.3, ease: [0.76, 0, 0.24, 1] }}
-            className="text-[12vw] leading-[0.8] font-sans font-bold tracking-tighter uppercase text-white"
-          >
-            Sriman
-          </motion.h1>
-        </div>
+      <div className="max-w-4xl mx-auto px-6 flex flex-col items-center text-center z-10">
         
-        <div className="overflow-hidden">
-          <motion.h1
-            initial={{ y: "100%" }}
-            animate={{ y: 0 }}
-            transition={{ duration: 1.2, delay: 0.4, ease: [0.76, 0, 0.24, 1] }}
-            className="text-[12vw] leading-[0.8] font-serif italic tracking-tight text-[#CCCCCC]"
-          >
-            Kumar V.
-          </motion.h1>
-        </div>
-
-        <div className="mt-16 overflow-hidden">
-          <motion.p
-            initial={{ y: "100%" }}
-            animate={{ y: 0 }}
-            transition={{ duration: 1, delay: 0.6, ease: [0.76, 0, 0.24, 1] }}
-            className="max-w-md mx-auto text-gray-400 text-sm md:text-base font-medium leading-relaxed"
-          >
-            Architecting high-performance digital experiences and solving intricate algorithmic challenges with deliberate, sustainable code.
-          </motion.p>
-        </div>
-      </motion.div>
-
-      {/* Abstract Background Element */}
-      <motion.div 
-        style={{ y: y2 }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] border border-white/5 rounded-full z-0 opacity-50 pointer-events-none"
-      />
-      
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 overflow-hidden">
         <motion.div
-          initial={{ y: "100%" }}
-          animate={{ y: 0 }}
-          transition={{ duration: 1, delay: 1, ease: [0.76, 0, 0.24, 1] }}
-          className="flex flex-col items-center gap-4"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="w-24 h-24 md:w-32 md:h-32 rounded-full glass p-1 mb-8"
         >
-          <span className="text-[10px] uppercase tracking-widest text-gray-500 font-medium">Discover</span>
-          <div className="w-px h-16 bg-gradient-to-b from-gray-500 to-transparent" />
+          <div className="w-full h-full rounded-full bg-gradient-to-tr from-accent/20 to-purple-500/20 flex items-center justify-center border border-white/10 overflow-hidden">
+            {/* Placeholder for actual image */}
+            <span className="text-2xl md:text-4xl font-bold text-white/50">SK</span>
+          </div>
         </motion.div>
-      </div>
 
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass border-white/10 text-xs font-medium text-gray-300 mb-6"
+        >
+          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+          Available for Opportunities
+        </motion.div>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight text-white mb-6"
+        >
+          Hi, I'm <span className="gradient-text">Sriman.</span>
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="text-lg md:text-xl text-gray-400 max-w-2xl mb-10 leading-relaxed font-sans"
+        >
+          A software engineer passionate about architecting scalable applications, elegant user interfaces, and robust backend systems.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="flex flex-col sm:flex-row items-center gap-4"
+        >
+          <a 
+            href="#projects"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-white text-black font-semibold hover:bg-gray-100 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]"
+          >
+            View Work <ArrowRight size={18} />
+          </a>
+          <a 
+            href="#resume"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full glass border border-white/10 text-white font-medium hover:bg-white/10 transition-all"
+          >
+            Resume <Download size={18} />
+          </a>
+        </motion.div>
+
+      </div>
+      
     </section>
   );
 };

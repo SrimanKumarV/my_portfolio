@@ -2,59 +2,76 @@ import { motion } from 'framer-motion';
 
 export const Education = () => {
   return (
-    <section className="py-32 relative bg-[#000000]" id="experience">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 grid lg:grid-cols-12 gap-16">
+    <section className="py-24 relative" id="experience">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 grid lg:grid-cols-2 gap-16">
         
-        <div className="lg:col-span-4">
-          <h2 className="text-sm font-medium tracking-[0.2em] uppercase text-gray-500 sticky top-32">
-            Background
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-8">
+            Education <span className="gradient-text">&</span> Experience.
           </h2>
-        </div>
-
-        <div className="lg:col-span-8">
           
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-            className="border-b border-white/10 pb-12 mb-12"
-          >
-            <span className="text-xs font-medium uppercase tracking-widest text-[#CCCCCC] mb-4 block">Education</span>
-            <h3 className="text-3xl md:text-5xl font-sans font-bold text-white mb-2">
-              B.E. Computer Science
+          <div className="glass-card p-8 rounded-3xl relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-accent to-purple-500" />
+            <span className="inline-block px-3 py-1 bg-white/10 text-xs font-medium text-white rounded-full mb-4">Class of 2028</span>
+            <h3 className="text-xl md:text-2xl font-display font-bold text-white mb-2">
+              B.E. Computer Science & Engineering
             </h3>
-            <p className="text-xl font-serif italic text-gray-400 mb-6">Kongu Engineering College</p>
-            <div className="flex items-center gap-4 text-sm text-gray-500 uppercase tracking-widest">
-              <span>Class of 2028</span>
-              <span className="w-1 h-1 rounded-full bg-gray-500" />
-              <span>Tamil Nadu, IN</span>
+            <p className="text-gray-400 font-medium mb-6">Kongu Engineering College &bull; Tamil Nadu, India</p>
+            
+            <div className="space-y-4">
+              <h4 className="text-sm font-semibold text-white uppercase tracking-wider">Relevant Coursework</h4>
+              <div className="flex flex-wrap gap-2">
+                {['Data Structures', 'Algorithms', 'DBMS', 'OOP', 'Networks', 'OS'].map(course => (
+                  <span key={course} className="text-xs text-gray-300 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full">
+                    {course}
+                  </span>
+                ))}
+              </div>
             </div>
-          </motion.div>
+          </div>
+        </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.76, 0, 0.24, 1] }}
-          >
-            <span className="text-xs font-medium uppercase tracking-widest text-[#CCCCCC] mb-8 block">Certifications</span>
-            <div className="grid sm:grid-cols-2 gap-x-12 gap-y-8">
-              {[
-                { name: 'Smart Certificate Program', issuer: 'Kongu Engineering College' },
-                { name: 'Alumnex Connect', issuer: 'Web Development Certification' },
-                { name: 'PostgreSQL', issuer: 'Database Management' },
-                { name: 'Git & GitHub', issuer: 'Version Control' },
-              ].map((cert) => (
-                <div key={cert.name} className="group cursor-pointer">
-                  <h4 className="text-white font-sans text-lg font-medium group-hover:text-[#CCCCCC] transition-colors">{cert.name}</h4>
-                  <p className="text-gray-500 font-serif italic text-sm mt-1">{cert.issuer}</p>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+        >
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-8">
+            Certifications.
+          </h2>
+          
+          <div className="space-y-4">
+            {[
+              { name: 'Smart Certificate Program', issuer: 'Kongu Engineering College' },
+              { name: 'Alumnex Connect', issuer: 'Web Development Certification' },
+              { name: 'PostgreSQL', issuer: 'Database Management' },
+              { name: 'Git & GitHub', issuer: 'Version Control Systems' },
+            ].map((cert, index) => (
+              <motion.div 
+                key={cert.name}
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 + (index * 0.1) }}
+                className="glass p-5 rounded-2xl flex items-center justify-between"
+              >
+                <div>
+                  <h4 className="text-white font-medium mb-1">{cert.name}</h4>
+                  <p className="text-sm text-gray-400">{cert.issuer}</p>
                 </div>
-              ))}
-            </div>
-          </motion.div>
+                <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
+                  <span className="text-accent text-lg">★</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
 
-        </div>
       </div>
     </section>
   );
