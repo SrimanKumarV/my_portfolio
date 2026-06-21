@@ -69,7 +69,7 @@ export const Contact = () => {
           <div className="mt-10 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-400 text-sm font-medium">
             <div className="flex items-center gap-2">
               <Mail size={16} className="text-gray-300" />
-              <a href="mailto:contact@example.com" className="hover:text-white transition-colors">contact@example.com</a>
+              <a href="mailto:srimankumar06@gmail.com" className="hover:text-white transition-colors">srimankumar06@gmail.com</a>
             </div>
             <div className="flex items-center gap-2">
               <MapPin size={16} className="text-gray-300" />
