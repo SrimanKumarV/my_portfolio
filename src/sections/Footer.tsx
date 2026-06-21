@@ -1,37 +1,37 @@
-
-import { Mail } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { Mail } from 'lucide-react';
 
 export const Footer = () => {
   return (
-    <footer className="bg-[#05070a] py-12 border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
+    <footer className="bg-[#000000] pt-24 pb-12 border-t border-white/10">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-end gap-12">
         
-        <div className="text-center md:text-left">
-          <a href="#" className="text-xl font-display font-bold tracking-tight text-white inline-block mb-2">
-            Sriman Kumar <span className="text-accent">V.</span>
+        <div className="text-left">
+          <a href="#home" className="text-3xl md:text-5xl font-serif italic tracking-wide text-white block mb-6">
+            Sriman Kumar V.
           </a>
-          <p className="text-gray-500 text-sm">
-            Building digital experiences with code and creativity.
+          <p className="text-gray-500 font-sans uppercase tracking-[0.2em] text-xs">
+            Software Engineer &bull; Based in India
           </p>
         </div>
 
-        <div className="flex items-center gap-4">
-          <a href="#" className="w-10 h-10 rounded-full glass flex items-center justify-center text-gray-400 hover:text-accent hover:border-accent/30 transition-all">
-            <FaGithub size={20} />
-          </a>
-          <a href="#" className="w-10 h-10 rounded-full glass flex items-center justify-center text-gray-400 hover:text-accent hover:border-accent/30 transition-all">
-            <FaLinkedin size={20} />
-          </a>
-          <a href="#" className="w-10 h-10 rounded-full glass flex items-center justify-center text-gray-400 hover:text-accent hover:border-accent/30 transition-all">
-            <Mail size={20} />
-          </a>
+        <div className="flex flex-col items-end gap-8">
+          <div className="flex items-center gap-6">
+            <a href="#" className="text-gray-500 hover:text-white transition-colors">
+              <FaGithub size={24} />
+            </a>
+            <a href="#" className="text-gray-500 hover:text-white transition-colors">
+              <FaLinkedin size={24} />
+            </a>
+            <a href="#" className="text-gray-500 hover:text-white transition-colors">
+              <Mail size={24} />
+            </a>
+          </div>
+          <p className="text-gray-600 text-[10px] uppercase tracking-widest font-sans">
+            &copy; {new Date().getFullYear()} All rights reserved.
+          </p>
         </div>
 
-      </div>
-      
-      <div className="mt-8 text-center text-gray-600 text-xs">
-        <p>&copy; {new Date().getFullYear()} Sriman Kumar V. All rights reserved.</p>
       </div>
     </footer>
   );

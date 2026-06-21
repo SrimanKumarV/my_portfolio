@@ -1,100 +1,92 @@
-import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const NAV_LINKS = [
-  { label: 'About', href: '#about' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Projects', href: '#projects' },
+  { label: 'Index', href: '#home' },
+  { label: 'Expertise', href: '#about' },
+  { label: 'Selected Work', href: '#projects' },
+  { label: 'Background', href: '#experience' },
   { label: 'Contact', href: '#contact' },
 ];
 
 export const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-transparent ${
-        isScrolled ? 'glass border-white/5 py-4' : 'bg-transparent py-6'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-        <a href="#" className="text-2xl font-display font-bold tracking-tight text-white group">
-          Sriman Kumar <span className="text-accent group-hover:text-glow transition-all duration-300">V.</span>
+    <>
+      <header className="fixed top-0 left-0 w-full z-[80] p-6 md:p-12 flex justify-between items-center mix-blend-difference text-white">
+        <a href="#home" className="text-xl md:text-2xl font-serif italic tracking-wide">
+          Sriman Kumar V.
         </a>
-
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
-          <ul className="flex items-center gap-8 text-sm font-medium text-gray-300">
-            {NAV_LINKS.map((link) => (
-              <li key={link.label}>
-                <a
-                  href={link.href}
-                  className="hover:text-accent transition-colors duration-200"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <a
-            href="#resume"
-            className="px-5 py-2.5 rounded-full border border-white/20 text-sm font-medium hover:border-accent hover:text-accent transition-all duration-300"
-          >
-            Resume
-          </a>
-        </nav>
-
-        {/* Mobile Toggle */}
-        <button
-          className="md:hidden text-gray-300 hover:text-white"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle Menu"
+        
+        <button 
+          onClick={() => setIsOpen(true)}
+          className="group flex items-center gap-3 hover-trigger"
         >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          <span className="uppercase text-xs tracking-[0.2em] font-medium hidden md:block">Menu</span>
+          <div className="w-8 flex flex-col gap-1.5 items-end">
+            <div className="h-px bg-white w-full transition-all duration-300 group-hover:w-full" />
+            <div className="h-px bg-white w-2/3 transition-all duration-300 group-hover:w-full" />
+          </div>
         </button>
-      </div>
+      </header>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
-        {isMobileMenuOpen && (
+        {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 w-full glass border-t border-white/5 shadow-2xl py-6 px-6 flex flex-col gap-4 md:hidden"
+            initial={{ y: '-100%' }}
+            animate={{ y: 0 }}
+            exit={{ y: '-100%' }}
+            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+            className="fixed inset-0 bg-[#0a0a0a] z-[90] flex flex-col justify-between p-6 md:p-12"
           >
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="text-lg font-medium text-gray-300 hover:text-accent transition-colors duration-200"
-                onClick={() => setIsMobileMenuOpen(false)}
+            <div className="flex justify-between items-center text-white">
+              <span className="text-xl md:text-2xl font-serif italic tracking-wide opacity-50">
+                Menu
+              </span>
+              <button 
+                onClick={() => setIsOpen(false)}
+                className="group flex items-center gap-3 hover-trigger"
               >
-                {link.label}
-              </a>
-            ))}
-            <div className="pt-4 border-t border-white/10">
-              <a
-                href="#resume"
-                className="inline-block w-full text-center px-6 py-3 rounded-lg bg-accent/10 border border-accent/20 text-accent font-medium"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Resume
-              </a>
+                <span className="uppercase text-xs tracking-[0.2em] font-medium hidden md:block">Close</span>
+                <div className="w-8 h-8 relative flex items-center justify-center">
+                  <div className="absolute w-full h-px bg-white rotate-45" />
+                  <div className="absolute w-full h-px bg-white -rotate-45" />
+                </div>
+              </button>
+            </div>
+
+            <nav className="flex flex-col gap-4 md:gap-8 mt-auto mb-auto max-w-4xl mx-auto w-full">
+              {NAV_LINKS.map((link, i) => (
+                <div key={link.label} className="overflow-hidden">
+                  <motion.div
+                    initial={{ y: '100%' }}
+                    animate={{ y: 0 }}
+                    exit={{ y: '100%' }}
+                    transition={{ duration: 0.8, delay: 0.1 * i, ease: [0.76, 0, 0.24, 1] }}
+                  >
+                    <a
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className="text-5xl md:text-8xl font-sans font-bold text-transparent text-stroke hover:text-stroke-hover transition-all duration-500 uppercase tracking-tighter"
+                    >
+                      {link.label}
+                    </a>
+                  </motion.div>
+                </div>
+              ))}
+            </nav>
+
+            <div className="flex justify-between items-end text-sm text-gray-500 uppercase tracking-widest font-medium">
+              <div className="flex gap-6">
+                <a href="#" className="hover:text-white transition-colors">GitHub</a>
+                <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
+              </div>
+              <a href="#resume" className="hover:text-white transition-colors">Resume</a>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 };

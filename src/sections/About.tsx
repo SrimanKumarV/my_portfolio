@@ -1,82 +1,63 @@
-
 import { motion } from 'framer-motion';
-import { SectionHeading } from '../components/SectionHeading';
-import { SkillBadge } from '../components/SkillBadge';
-
-const SKILL_CATEGORIES = [
-  {
-    title: 'Programming Languages',
-    skills: ['Java', 'Python', 'JavaScript', 'C', 'C++'],
-  },
-  {
-    title: 'Frontend Development',
-    skills: ['HTML5', 'CSS3', 'Bootstrap', 'React.js'],
-  },
-  {
-    title: 'Backend Development',
-    skills: ['Node.js', 'Express.js', 'PHP'],
-  },
-  {
-    title: 'Databases',
-    skills: ['MySQL', 'PostgreSQL'],
-  },
-  {
-    title: 'Tools & Platforms',
-    skills: ['Git', 'GitHub', 'VS Code', 'XAMPP'],
-  },
-];
 
 export const About = () => {
   return (
-    <section className="py-24 relative" id="about">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <SectionHeading 
-          title="About & Expertise" 
-          subtitle="A blend of academic rigor, technical agility, and a relentless problem-solving mindset."
-        />
+    <section className="py-32 relative bg-[#0a0a0a]" id="about">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 grid lg:grid-cols-12 gap-16">
+        
+        <div className="lg:col-span-4">
+          <h2 className="text-sm font-medium tracking-[0.2em] uppercase text-gray-500 sticky top-32">
+            Expertise & Origin
+          </h2>
+        </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start mt-12">
-          
-          {/* Narrative */}
+        <div className="lg:col-span-8">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="space-y-6 text-gray-400 text-lg leading-relaxed"
+            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+            className="text-2xl md:text-4xl font-serif italic leading-relaxed text-[#CCCCCC] mb-16"
+          >
+            "A blend of academic rigor, technical agility, and a relentless problem-solving mindset."
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.76, 0, 0.24, 1] }}
+            className="space-y-8 text-gray-400 font-sans text-lg max-w-2xl"
           >
             <p>
-              I am a Computer Science Engineering student with hands-on experience in full-stack web development, database management, and software engineering principles. My background is rooted in a deep curiosity for how digital systems operate at scale.
+              I am a Computer Science Engineering student obsessed with the architecture of digital systems. My foundation is built on deep algorithmic understanding and scalable web development.
             </p>
             <p>
-              I am passionate about building scalable applications, solving real-world problems, and continuously learning modern technologies. My approach blends an analytical problem-solving mindset with a dedication to collaborative teamwork and iterative development.
-            </p>
-            <p>
-              Whether I am architecting a relational database, deploying a responsive frontend, or fine-tuning a machine learning model, my goal remains constant: to engineer elegant, maintainable solutions that create measurable impact.
+              Whether engineering a relational database schema, deploying a seamless frontend, or fine-tuning a machine learning model, my approach remains deliberate: write clean, maintainable, and highly efficient code.
             </p>
           </motion.div>
 
-          {/* Skills Grid */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="space-y-8"
-          >
-            {SKILL_CATEGORIES.map((category) => (
-              <div key={category.title} className="glass-card p-6 rounded-2xl">
-                <h3 className="text-white font-display font-semibold mb-4 text-sm uppercase tracking-wider opacity-80">
-                  {category.title}
-                </h3>
-                <div className="flex flex-wrap gap-3">
-                  {category.skills.map((skill) => (
-                    <SkillBadge key={skill} name={skill} />
-                  ))}
-                </div>
-              </div>
+          {/* Minimalist Skills */}
+          <div className="mt-24 grid sm:grid-cols-2 gap-12">
+            {[
+              { title: 'Core', skills: 'Java, Python, JS, C++' },
+              { title: 'Frontend', skills: 'React, Tailwind, HTML/CSS' },
+              { title: 'Backend', skills: 'Node.js, Express, PHP' },
+              { title: 'Database & Tools', skills: 'MySQL, PostgreSQL, Git' }
+            ].map((cat, i) => (
+              <motion.div 
+                key={cat.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 + (i * 0.1), ease: [0.76, 0, 0.24, 1] }}
+                className="border-t border-white/10 pt-4"
+              >
+                <h4 className="text-white text-sm font-medium uppercase tracking-wider mb-2">{cat.title}</h4>
+                <p className="text-gray-500 font-serif italic">{cat.skills}</p>
+              </motion.div>
             ))}
-          </motion.div>
+          </div>
 
         </div>
       </div>

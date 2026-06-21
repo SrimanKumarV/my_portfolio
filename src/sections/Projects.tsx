@@ -1,67 +1,90 @@
-
-import { SectionHeading } from '../components/SectionHeading';
-import { ProjectCard } from '../components/ProjectCard';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 const PROJECTS = [
   {
-    title: 'Smart Certificate Generation System',
-    description: 'Developed a web-based certificate management system enabling students to submit requests online while administrators manage approvals digitally. Features an automated workflow, authentication system, and separate dashboards.',
-    tags: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap'],
-    githubUrl: '#',
+    title: 'Smart Cert',
+    type: 'Enterprise Framework',
+    description: 'Automated certificate management system and digital student workflows.',
+    tags: ['PHP', 'MySQL', 'Bootstrap'],
   },
   {
-    title: 'Alumnex-Connect',
-    description: 'A full-stack web portal built to facilitate seamless student-alumni networking, professional mentorship, and career tracking.',
-    tags: ['Node.js', 'React', 'Express', 'Full-Stack'],
-    githubUrl: '#',
-    liveUrl: '#',
+    title: 'Alumnex',
+    type: 'Full-Stack Portal',
+    description: 'Student-alumni networking, professional mentorship, and career tracking.',
+    tags: ['Node.js', 'React', 'Express'],
   },
   {
-    title: 'Missing Things Finder',
-    description: 'Built a Java application using efficient data structures like HashMaps for tracking lost and found items efficiently. Includes fast search operations and database connectivity.',
-    tags: ['Java', 'MySQL', 'Desktop App'],
-    githubUrl: '#',
+    title: 'Lost & Found',
+    type: 'Desktop App',
+    description: 'High-integrity application with efficient data structures for tracking.',
+    tags: ['Java', 'MySQL'],
   },
   {
-    title: 'Sentiment Analysis System',
-    description: 'Developed a machine learning model capable of classifying sentiments from user reviews using advanced text preprocessing and feature extraction techniques.',
-    tags: ['Python', 'Machine Learning', 'NLP'],
-    githubUrl: '#',
+    title: 'Sentiment',
+    type: 'Machine Learning',
+    description: 'Model capable of classifying sentiments from user reviews.',
+    tags: ['Python', 'NLP'],
   },
   {
-    title: 'Air Pollution Detection using Deep Learning',
-    description: 'Built a deep learning model using environmental datasets for predicting and analyzing environmental pollution levels. Implemented neural networks for extracting environmental insights.',
-    tags: ['Python', 'Deep Learning', 'Neural Networks'],
-    githubUrl: '#',
-  },
-  {
-    title: 'Railway Track Allocation Simulator',
-    description: 'An interactive, low-level operating systems simulation implementing the Banker\'s Algorithm to visualize deadlock avoidance in infrastructure logistics.',
-    tags: ['JavaScript', 'OS Simulation', 'Algorithms'],
-    githubUrl: '#',
+    title: 'Air Quality',
+    type: 'Deep Learning',
+    description: 'Predicting environmental pollution using neural networks.',
+    tags: ['Python', 'Neural Networks'],
   }
 ];
 
 export const Projects = () => {
-  return (
-    <section className="py-24 relative bg-black/20" id="projects">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <SectionHeading 
-          title="Selected Work" 
-          subtitle="A collection of professional case studies showcasing my ability to engineer scalable solutions and solve complex problems."
-        />
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+  return (
+    <section className="py-32 relative bg-[#000000] z-20" id="projects">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <h2 className="text-sm font-medium tracking-[0.2em] uppercase text-gray-500 mb-16">
+          Selected Work
+        </h2>
+
+        <div className="flex flex-col border-t border-white/10">
           {PROJECTS.map((project, index) => (
-            <ProjectCard 
+            <motion.div 
               key={project.title}
-              title={project.title}
-              description={project.description}
-              tags={project.tags}
-              githubUrl={project.githubUrl}
-              liveUrl={project.liveUrl}
-              delay={index * 0.1}
-            />
+              className="group relative border-b border-white/10 py-10 md:py-16 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 cursor-pointer"
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              {/* Animated Background on Hover */}
+              <motion.div
+                className="absolute inset-0 bg-white/5 origin-left -z-10"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: hoveredIndex === index ? 1 : 0 }}
+                transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
+              />
+
+              <div className="flex-1">
+                <motion.h3 
+                  className="text-4xl md:text-6xl font-sans font-bold uppercase tracking-tighter text-white transition-colors duration-500 group-hover:text-transparent group-hover:text-stroke-hover"
+                >
+                  {project.title}
+                </motion.h3>
+              </div>
+
+              <div className="flex-1 md:text-right flex flex-col md:items-end gap-3">
+                <span className="text-xs uppercase tracking-widest text-[#CCCCCC] font-medium font-serif italic">
+                  {project.type}
+                </span>
+                <p className="text-gray-400 text-sm max-w-xs transition-opacity duration-500 md:opacity-0 group-hover:opacity-100">
+                  {project.description}
+                </p>
+                <div className="flex gap-2 mt-2">
+                  {project.tags.map(tag => (
+                    <span key={tag} className="text-[10px] uppercase tracking-wider text-gray-500 border border-white/10 px-2 py-1 rounded-full">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+            </motion.div>
           ))}
         </div>
       </div>

@@ -1,97 +1,54 @@
-
 import { motion } from 'framer-motion';
-import { SectionHeading } from '../components/SectionHeading';
-import { BookOpen, GraduationCap, Award } from 'lucide-react';
 
 export const Education = () => {
   return (
-    <section className="py-24 relative" id="experience">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <SectionHeading 
-          title="Education & Certifications" 
-          subtitle="Academic background and continuous learning endeavors."
-        />
+    <section className="py-32 relative bg-[#000000]" id="experience">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 grid lg:grid-cols-12 gap-16">
+        
+        <div className="lg:col-span-4">
+          <h2 className="text-sm font-medium tracking-[0.2em] uppercase text-gray-500 sticky top-32">
+            Background
+          </h2>
+        </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 mt-12">
+        <div className="lg:col-span-8">
           
-          {/* Education Timeline */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+            className="border-b border-white/10 pb-12 mb-12"
           >
-            <div className="flex items-center gap-3 mb-8">
-              <GraduationCap className="text-accent" size={28} />
-              <h3 className="text-2xl font-display font-bold text-white">Academic Journey</h3>
-            </div>
-
-            <div className="glass-card p-8 rounded-2xl relative overflow-hidden group">
-              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-accent to-transparent" />
-              
-              <div className="flex justify-between items-start mb-2">
-                <h4 className="text-xl font-bold text-white group-hover:text-accent transition-colors">
-                  Bachelor of Engineering in Computer Science & Engineering
-                </h4>
-              </div>
-              
-              <div className="text-accent text-sm font-medium mb-4">
-                Expected Graduation: 2028
-              </div>
-              
-              <p className="text-gray-400 font-medium mb-6">
-                Kongu Engineering College • Tamil Nadu, India
-              </p>
-              
-              <div>
-                <h5 className="text-sm uppercase tracking-wider text-gray-500 font-semibold mb-3 flex items-center gap-2">
-                  <BookOpen size={16} /> Relevant Coursework
-                </h5>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  {['Data Structures and Algorithms', 'Database Management Systems', 'Object Oriented Programming', 'Computer Networks', 'Operating Systems'].map((course) => (
-                    <li key={course} className="text-gray-300 text-sm flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-accent/50" />
-                      {course}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            
-            <div className="mt-8 glass-card p-6 rounded-2xl border-l-4 border-l-indigo-500">
-              <p className="text-gray-300 italic">
-                "Actively building academic and personal software projects focused on full-stack development, databases, and software engineering."
-              </p>
+            <span className="text-xs font-medium uppercase tracking-widest text-[#CCCCCC] mb-4 block">Education</span>
+            <h3 className="text-3xl md:text-5xl font-sans font-bold text-white mb-2">
+              B.E. Computer Science
+            </h3>
+            <p className="text-xl font-serif italic text-gray-400 mb-6">Kongu Engineering College</p>
+            <div className="flex items-center gap-4 text-sm text-gray-500 uppercase tracking-widest">
+              <span>Class of 2028</span>
+              <span className="w-1 h-1 rounded-full bg-gray-500" />
+              <span>Tamil Nadu, IN</span>
             </div>
           </motion.div>
 
-          {/* Certifications */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.76, 0, 0.24, 1] }}
           >
-            <div className="flex items-center gap-3 mb-8">
-              <Award className="text-accent" size={28} />
-              <h3 className="text-2xl font-display font-bold text-white">Certifications</h3>
-            </div>
-
-            <div className="space-y-4">
+            <span className="text-xs font-medium uppercase tracking-widest text-[#CCCCCC] mb-8 block">Certifications</span>
+            <div className="grid sm:grid-cols-2 gap-x-12 gap-y-8">
               {[
                 { name: 'Smart Certificate Program', issuer: 'Kongu Engineering College' },
                 { name: 'Alumnex Connect', issuer: 'Web Development Certification' },
                 { name: 'PostgreSQL', issuer: 'Database Management' },
-                { name: 'Git & GitHub', issuer: 'Version Control Systems' },
+                { name: 'Git & GitHub', issuer: 'Version Control' },
               ].map((cert) => (
-                <div key={cert.name} className="glass p-5 rounded-xl flex items-center justify-between group hover:border-accent/30 transition-all">
-                  <div>
-                    <h4 className="text-white font-medium mb-1 group-hover:text-accent transition-colors">{cert.name}</h4>
-                    <p className="text-sm text-gray-400">{cert.issuer}</p>
-                  </div>
-                  <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 group-hover:bg-accent/10 group-hover:text-accent transition-all">
-                    <Award size={18} />
-                  </a>
+                <div key={cert.name} className="group cursor-pointer">
+                  <h4 className="text-white font-sans text-lg font-medium group-hover:text-[#CCCCCC] transition-colors">{cert.name}</h4>
+                  <p className="text-gray-500 font-serif italic text-sm mt-1">{cert.issuer}</p>
                 </div>
               ))}
             </div>
