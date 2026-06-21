@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
+import type { MouseEvent } from 'react';
 import { ExternalLink } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
 
@@ -47,6 +48,93 @@ const PROJECTS = [
   }
 ];
 
+const SpotlightCard = ({ project, index }: { project: any; index: number }) => {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent) {
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="group relative h-full rounded-3xl border border-white/5 bg-white/[0.02] overflow-hidden p-8 flex flex-col"
+      onMouseMove={handleMouseMove}
+    >
+      <motion.div
+        className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 transition duration-300 group-hover:opacity-100"
+        style={{
+          background: useMotionTemplate`
+            radial-gradient(
+              600px circle at ${mouseX}px ${mouseY}px,
+              rgba(0, 242, 254, 0.1),
+              transparent 40%
+            )
+          `,
+        }}
+      />
+      <motion.div
+        className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 transition duration-300 group-hover:opacity-100"
+        style={{
+          border: '1px solid transparent',
+          background: useMotionTemplate`
+            radial-gradient(
+              400px circle at ${mouseX}px ${mouseY}px,
+              rgba(255, 255, 255, 0.3),
+              transparent 40%
+            ) border-box
+          `,
+          WebkitMask: 'linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)',
+          WebkitMaskComposite: 'xor',
+          maskComposite: 'exclude',
+        }}
+      />
+      
+      <div className="relative z-10 flex justify-between items-start mb-6">
+        <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-white/10 transition-colors">
+          <svg className="w-6 h-6 text-gray-300 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+          </svg>
+        </div>
+        <div className="flex gap-3 text-gray-400">
+          {project.githubUrl && (
+            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-white/10 hover:text-white transition-all magnetic">
+              <FaGithub size={20} />
+            </a>
+          )}
+          {project.liveUrl && (
+            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-white/10 hover:text-white transition-all magnetic">
+              <ExternalLink size={20} />
+            </a>
+          )}
+        </div>
+      </div>
+      
+      <h3 className="relative z-10 text-xl font-display font-semibold text-white mb-3">
+        {project.title}
+      </h3>
+      
+      <p className="relative z-10 text-gray-400 text-sm flex-grow mb-8 leading-relaxed">
+        {project.description}
+      </p>
+      
+      <div className="relative z-10 flex flex-wrap gap-2 mt-auto">
+        {project.tags.map((tag: string) => (
+          <span key={tag} className="text-[11px] font-medium text-gray-300 bg-white/5 border border-white/5 px-3 py-1.5 rounded-full">
+            {tag}
+          </span>
+        ))}
+      </div>
+    </motion.div>
+  );
+};
+
 export const Projects = () => {
   return (
     <section className="py-24 relative" id="projects">
@@ -74,50 +162,7 @@ export const Projects = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {PROJECTS.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="glass-card rounded-3xl p-8 flex flex-col h-full group"
-            >
-              <div className="flex justify-between items-start mb-6">
-                <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-white/10 transition-colors">
-                  <svg className="w-6 h-6 text-gray-300 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                  </svg>
-                </div>
-                <div className="flex gap-3 text-gray-400">
-                  {project.githubUrl && (
-                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-white/10 hover:text-white transition-all">
-                      <FaGithub size={20} />
-                    </a>
-                  )}
-                  {project.liveUrl && (
-                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-white/10 hover:text-white transition-all">
-                      <ExternalLink size={20} />
-                    </a>
-                  )}
-                </div>
-              </div>
-              
-              <h3 className="text-xl font-display font-semibold text-white mb-3">
-                {project.title}
-              </h3>
-              
-              <p className="text-gray-400 text-sm flex-grow mb-8 leading-relaxed">
-                {project.description}
-              </p>
-              
-              <div className="flex flex-wrap gap-2 mt-auto">
-                {project.tags.map((tag) => (
-                  <span key={tag} className="text-[11px] font-medium text-gray-300 bg-white/5 border border-white/5 px-3 py-1.5 rounded-full">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
+            <SpotlightCard key={project.title} project={project} index={index} />
           ))}
         </div>
         

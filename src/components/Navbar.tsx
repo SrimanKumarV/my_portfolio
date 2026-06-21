@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { MagneticElement } from './MagneticElement';
 
 const NAV_LINKS = [
   { label: 'Home', href: '#home' },
@@ -48,22 +49,24 @@ export const Navbar = () => {
             const isActive = activeSection === link.href.substring(1);
             return (
               <li key={link.label}>
-                <a
-                  href={link.href}
-                  onClick={() => setActiveSection(link.href.substring(1))}
-                  className={`relative px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 ${
-                    isActive ? 'text-white' : 'text-gray-400 hover:text-white'
-                  }`}
-                >
-                  {isActive && (
-                    <motion.div
-                      layoutId="nav-pill"
-                      className="absolute inset-0 bg-white/10 rounded-full"
-                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                    />
-                  )}
-                  <span className="relative z-10">{link.label}</span>
-                </a>
+                <MagneticElement strength={20}>
+                  <a
+                    href={link.href}
+                    onClick={() => setActiveSection(link.href.substring(1))}
+                    className={`relative px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 flex items-center justify-center ${
+                      isActive ? 'text-white' : 'text-gray-400 hover:text-white'
+                    }`}
+                  >
+                    {isActive && (
+                      <motion.div
+                        layoutId="nav-pill"
+                        className="absolute inset-0 bg-white/10 rounded-full"
+                        transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                      />
+                    )}
+                    <span className="relative z-10">{link.label}</span>
+                  </a>
+                </MagneticElement>
               </li>
             );
           })}

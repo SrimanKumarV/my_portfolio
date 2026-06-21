@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Download } from 'lucide-react';
+import { MagneticElement } from '../components/MagneticElement';
 
 export const Hero = () => {
   return (
@@ -53,18 +54,22 @@ export const Hero = () => {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="flex flex-col sm:flex-row items-center gap-4"
         >
-          <a 
-            href="#projects"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-white text-black font-semibold hover:bg-gray-100 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]"
-          >
-            View Work <ArrowRight size={18} />
-          </a>
-          <a 
-            href="#resume"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full glass border border-white/10 text-white font-medium hover:bg-white/10 transition-all"
-          >
-            Resume <Download size={18} />
-          </a>
+          <MagneticElement strength={40}>
+            <a 
+              href="#projects"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-white text-black font-semibold hover:bg-gray-100 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]"
+            >
+              View Work <ArrowRight size={18} />
+            </a>
+          </MagneticElement>
+          <MagneticElement strength={40}>
+            <a 
+              href="#resume"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full glass border border-white/10 text-white font-medium hover:bg-white/10 transition-all"
+            >
+              Resume <Download size={18} />
+            </a>
+          </MagneticElement>
         </motion.div>
 
       </div>
