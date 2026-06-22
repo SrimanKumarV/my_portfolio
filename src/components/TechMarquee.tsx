@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+
 
 const TECHNOLOGIES = [
   "React.js", "Node.js", "Python", "Java", "C++", "PostgreSQL", 
