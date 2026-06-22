@@ -116,7 +116,7 @@ export const Hero = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ type: 'spring', stiffness: 400, damping: 10 }}
           >
-            Sriman.
+            Sriman Kumar.
           </motion.span>
         </motion.h1>
 
