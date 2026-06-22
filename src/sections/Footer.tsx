@@ -19,10 +19,10 @@ export const Footer = () => {
           <a href="https://github.com/SrimanKumarV" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all" title="GitHub">
             <FaGithub size={18} />
           </a>
-          <a href="https://linkedin.com/in/srimankumar06" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all" title="LinkedIn">
+          <a href="https://www.linkedin.com/in/sriman-vel-b89432383/" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all" title="LinkedIn">
             <FaLinkedin size={18} />
           </a>
-          <a href="https://leetcode.com/srimankumar06" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all" title="LeetCode">
+          <a href="https://leetcode.com/u/Sriman_Kumar_V/" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all" title="LeetCode">
             <FaCode size={18} />
           </a>
           <a href="mailto:srimankumar06@gmail.com" className="w-10 h-10 rounded-full glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all" title="Email">
