@@ -45,30 +45,31 @@ export const Education = () => {
           transition={{ delay: 0.2 }}
         >
           <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-8">
-            Certifications.
+            Achievements.
           </h2>
           
           <div className="space-y-4">
             {[
-              { name: 'Smart Certificate Program', issuer: 'Kongu Engineering College' },
-              { name: 'Alumnex Connect', issuer: 'Web Development Certification' },
-              { name: 'PostgreSQL', issuer: 'Database Management' },
-              { name: 'Git & GitHub', issuer: 'Version Control Systems' },
-            ].map((cert, index) => (
+              { title: 'Competitive Programmer', desc: 'Active problem solver on HackerRank & LeetCode', icon: '🏆' },
+              { title: 'Data Structures Expert', desc: 'Adept at optimizing complex algorithmic challenges', icon: '⚡' },
+              { title: 'Full-Stack Developer', desc: 'Engineered scalable web systems from scratch', icon: '💻' },
+              { title: 'AI & ML Enthusiast', desc: 'Built and integrated predictive deep learning models', icon: '🧠' },
+            ].map((item, index) => (
               <motion.div 
-                key={cert.name}
+                key={item.title}
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 + (index * 0.1) }}
-                className="glass p-5 rounded-2xl flex items-center justify-between"
+                whileHover={{ x: -5, backgroundColor: "rgba(255,255,255,0.05)" }}
+                className="glass p-5 rounded-2xl flex items-center gap-5 transition-colors cursor-default"
               >
-                <div>
-                  <h4 className="text-white font-medium mb-1">{cert.name}</h4>
-                  <p className="text-sm text-gray-400">{cert.issuer}</p>
+                <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 shrink-0 shadow-[0_0_15px_rgba(0,242,254,0.1)]">
+                  <span className="text-2xl">{item.icon}</span>
                 </div>
-                <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
-                  <span className="text-accent text-lg">★</span>
+                <div>
+                  <h4 className="text-white font-semibold mb-1 text-lg">{item.title}</h4>
+                  <p className="text-sm text-gray-400">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
