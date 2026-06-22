@@ -16,7 +16,7 @@ export const Education = () => {
           
           <motion.div 
             whileHover={{ y: -8, boxShadow: "0 20px 40px -10px rgba(0,0,0,0.5)" }}
-            className="glass-card p-8 rounded-3xl relative overflow-hidden transition-shadow"
+            className="glass-card p-8 rounded-3xl relative overflow-hidden transition-shadow mb-6"
           >
             <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-accent to-purple-500" />
             <span className="inline-block px-3 py-1 bg-white/10 text-xs font-medium text-white rounded-full mb-4">Class of 2028</span>
@@ -36,6 +36,36 @@ export const Education = () => {
               </div>
             </div>
           </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <motion.div 
+              whileHover={{ y: -4, boxShadow: "0 10px 30px -10px rgba(0,0,0,0.5)" }}
+              className="glass-card p-6 rounded-2xl relative overflow-hidden transition-shadow h-full flex flex-col"
+            >
+              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-accent to-purple-500" />
+              <h3 className="text-md font-display font-bold text-white mb-1">
+                Web Development Training
+              </h3>
+              <p className="text-gray-400 font-medium text-xs mb-3">
+                <a href="https://codebindtechnologies.com/" target="_blank" rel="noreferrer" className="hover:text-accent transition-colors underline decoration-white/20 underline-offset-2">CodeBind Technologies</a> &bull; Coimbatore
+              </p>
+              <p className="text-xs text-gray-500 leading-relaxed mt-auto">Completed practical inplant training focusing on modern web development workflows and industry practices.</p>
+            </motion.div>
+
+            <motion.div 
+              whileHover={{ y: -4, boxShadow: "0 10px 30px -10px rgba(0,0,0,0.5)" }}
+              className="glass-card p-6 rounded-2xl relative overflow-hidden transition-shadow h-full flex flex-col"
+            >
+              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-accent to-purple-500" />
+              <h3 className="text-md font-display font-bold text-white mb-1">
+                AI & Machine Learning
+              </h3>
+              <p className="text-gray-400 font-medium text-xs mb-3">
+                Durga Tech &bull; Erode
+              </p>
+              <p className="text-xs text-gray-500 leading-relaxed mt-auto">Successfully completed an intensive course on machine learning algorithms and predictive modeling pipelines.</p>
+            </motion.div>
+          </div>
         </motion.div>
 
         <motion.div
