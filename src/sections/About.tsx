@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 
 const SKILL_CATEGORIES = [
-  { title: 'Languages & Core', skills: ['Python', 'Java', 'C++', 'JavaScript', 'DSA'] },
-  { title: 'Software Dev', skills: ['React.js', 'Node.js', 'HTML5/CSS3', 'OOP'] },
-  { title: 'AI & Backend', skills: ['Machine Learning', 'OpenCV', 'FastAPI/Flask', 'REST APIs'] },
-  { title: 'Database & Tools', skills: ['PostgreSQL', 'MongoDB', 'Git/GitHub', 'Linux'] }
+  { title: 'Languages', skills: ['Java', 'Python', 'JavaScript (ES6+)', 'SQL', 'C++'] },
+  { title: 'Web Ecosystem', skills: ['MongoDB', 'Express.js', 'React', 'Node.js', 'HTML5/CSS3', 'TailwindCSS'] },
+  { title: 'Desktop & Infra', skills: ['Java Swing', 'JDBC', 'MySQL', 'Git', 'Render Cloud'] },
+  { title: 'Data Science', skills: ['OpenCV', 'Predictive Modeling', 'Data Analysis'] }
 ];
 
 export const About = () => {
