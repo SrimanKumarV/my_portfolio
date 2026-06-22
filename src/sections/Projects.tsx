@@ -200,13 +200,34 @@ const SpotlightCard = ({ project, index }: { project: typeof PROJECTS[0]; index:
               </div>
             </div>
 
-            {/* Hook */}
-            <p
-              className="text-gray-400 text-sm font-medium mb-5 leading-relaxed italic"
+            {/* Hook — vibrant gradient tagline */}
+            <div
+              className="relative mb-5 pl-4 overflow-hidden group/hook"
               style={{ transform: 'translateZ(20px)' }}
             >
-              "{project.hook}"
-            </p>
+              {/* Left accent stripe */}
+              <div
+                className="absolute left-0 top-0 bottom-0 w-[3px] rounded-full"
+                style={{
+                  background: `linear-gradient(180deg, ${accentRgba}0.9), transparent)`,
+                  boxShadow: `0 0 8px ${accentRgba}0.6)`,
+                }}
+              />
+              <p
+                className="text-sm font-semibold leading-relaxed tracking-wide"
+                style={{
+                  background: `linear-gradient(120deg, #ffffff 0%, ${accentRgba}1) 50%, #ffffff 100%)`,
+                  backgroundSize: '200% auto',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  animation: 'taglineShimmer 4s linear infinite',
+                  textShadow: 'none',
+                }}
+              >
+                "{project.hook}"
+              </p>
+            </div>
 
             {/* Features — Terminal */}
             <div
