@@ -63,7 +63,6 @@ const SpotlightCard = ({ project, index }: { project: any; index: number }) => {
 
   const rotateX = useSpring(useTransform(yPct, [-0.5, 0.5], [12, -12]), { damping: 25, stiffness: 200 });
   const rotateY = useSpring(useTransform(xPct, [-0.5, 0.5], [-12, 12]), { damping: 25, stiffness: 200 });
-  const shine = useSpring(useTransform(xPct, [-0.5, 0.5], [0, 1]), { damping: 25, stiffness: 200 });
 
   function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent) {
     const { left, top, width, height } = currentTarget.getBoundingClientRect();
