@@ -18,15 +18,16 @@ const PROJECTS = [
     color: 'from-blue-500/10 to-cyan-500/5',
   },
   {
-    title: 'Missing Things Finder',
-    hook: 'A high-performance desktop lost-and-found management ecosystem featuring ACID-compliant relational workflows.',
+    title: 'Decoding Palindrome',
+    hook: 'Bridging the gap between theoretical math and real-world CPU performance.',
     features: [
-      'Real-time local search indexing',
-      'Structured relational database schema for dual-key lookups',
-      'Clean user-state management using Java Swing event listeners'
+      'Empirical deep-dive into iterative versus recursive algorithms',
+      'Unmasking the hidden overhead behind classic algorithm designs',
+      'Real-world algorithmic benchmarking'
     ],
-    tags: ['Java Swing', 'AWT', 'MySQL', 'JDBC'],
-    githubUrl: 'https://github.com/SrimanKumarV',
+    tags: ['HTML', 'Algorithms', 'Performance Analysis'],
+    githubUrl: 'https://github.com/SrimanKumarV/Decoding-Palindrome-Verification',
+    liveUrl: 'https://decoding-palindrome-verification.vercel.app/?utm=codolio',
     color: 'from-emerald-500/10 to-teal-500/5',
   },
   {
