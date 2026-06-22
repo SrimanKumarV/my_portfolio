@@ -93,9 +93,8 @@ const SpotlightCard = ({ project, index }: { project: any; index: number }) => {
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      onClick={() => window.open('https://codolio.com/profile/Sriman_Kumar_V/devStats/github', '_blank')}
       style={{ rotateX, rotateY, transformStyle: 'preserve-3d', perspective: '1200px' }}
-      className="group relative h-full cursor-pointer"
+      className="group relative h-full"
     >
       {/* Card Body */}
       <div className={`relative h-full rounded-2xl border border-[#1E293B] bg-[#0B0F19] p-8 flex flex-col overflow-hidden transition-all duration-300 shadow-xl`}>
@@ -131,23 +130,30 @@ const SpotlightCard = ({ project, index }: { project: any; index: number }) => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
               </svg>
             </div>
-            {/* Title — scales up on hover */}
-            <motion.h3
-              className="font-display font-bold text-white leading-tight text-xl group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-400 transition-all duration-500"
+            {/* Title — scales up on hover and clickable */}
+            <motion.a
+              href="https://codolio.com/profile/Sriman_Kumar_V/devStats/github"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-display font-bold text-white leading-tight text-xl cursor-pointer inline-block"
+              whileHover={{ scale: 1.05, y: -2 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 10 }}
             >
-              {project.title}
-            </motion.h3>
+              <span className="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-accent hover:to-white transition-all duration-300">
+                {project.title}
+              </span>
+            </motion.a>
           </div>
 
           <div className="flex gap-2 text-gray-500">
             {project.githubUrl && (
-              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}
+              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer"
                 className="p-2 rounded-lg hover:bg-white/10 hover:text-white transition-all duration-200 magnetic">
                 <FaGithub size={18} />
               </a>
             )}
             {project.liveUrl && (
-              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}
+              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer"
                 className="p-2 rounded-lg hover:bg-white/10 hover:text-white transition-all duration-200 magnetic">
                 <ExternalLink size={18} />
               </a>
