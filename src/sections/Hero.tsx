@@ -15,8 +15,7 @@ export const Hero = () => {
           className="w-24 h-24 md:w-32 md:h-32 rounded-full glass p-1 mb-8"
         >
           <div className="w-full h-full rounded-full bg-gradient-to-tr from-accent/20 to-purple-500/20 flex items-center justify-center border border-white/10 overflow-hidden">
-            {/* Placeholder for actual image */}
-            <span className="text-2xl md:text-4xl font-bold text-white/50">SK</span>
+            <img src="/profile.jpg" alt="Sriman Kumar V" className="w-full h-full object-cover" />
           </div>
         </motion.div>
 
@@ -34,7 +33,8 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight text-white mb-6"
+          whileHover={{ scale: 1.05 }}
+          className="text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight text-white mb-6 cursor-default"
         >
           Hi, I'm <span className="gradient-text">Sriman.</span>
         </motion.h1>
@@ -45,7 +45,7 @@ export const Hero = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="text-lg md:text-xl text-gray-400 max-w-2xl mb-10 leading-relaxed font-sans"
         >
-          A software engineer passionate about architecting scalable applications, elegant user interfaces, and robust backend systems.
+          An aspiring Software & AI Engineer with a strong command of Data Structures, Algorithms, and scalable Full-Stack Development.
         </motion.p>
 
         <motion.div
@@ -64,7 +64,8 @@ export const Hero = () => {
           </MagneticElement>
           <MagneticElement strength={40}>
             <a 
-              href="#resume"
+              href="/Sriman_Kumar_Resume.pdf"
+              download="Sriman_Kumar_Resume.pdf"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full glass border border-white/10 text-white font-medium hover:bg-white/10 transition-all"
             >
               Resume <Download size={18} />

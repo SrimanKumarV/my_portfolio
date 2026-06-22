@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaCode } from 'react-icons/fa';
 import { Mail } from 'lucide-react';
 
 export const Footer = () => {
@@ -16,13 +16,16 @@ export const Footer = () => {
         </div>
 
         <div className="flex items-center gap-4">
-          <a href="#" className="w-10 h-10 rounded-full glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all">
+          <a href="https://github.com/SrimanKumarV" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all" title="GitHub">
             <FaGithub size={18} />
           </a>
-          <a href="#" className="w-10 h-10 rounded-full glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all">
+          <a href="https://linkedin.com/in/srimankumar06" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all" title="LinkedIn">
             <FaLinkedin size={18} />
           </a>
-          <a href="#" className="w-10 h-10 rounded-full glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all">
+          <a href="https://leetcode.com/srimankumar06" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all" title="LeetCode">
+            <FaCode size={18} />
+          </a>
+          <a href="mailto:srimankumar06@gmail.com" className="w-10 h-10 rounded-full glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all" title="Email">
             <Mail size={18} />
           </a>
         </div>

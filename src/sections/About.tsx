@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 
 const SKILL_CATEGORIES = [
-  { title: 'Languages', skills: ['Java', 'Python', 'JavaScript', 'C/C++'] },
-  { title: 'Frontend', skills: ['React.js', 'Tailwind CSS', 'HTML/CSS'] },
-  { title: 'Backend', skills: ['Node.js', 'Express', 'PHP'] },
-  { title: 'Databases', skills: ['MySQL', 'PostgreSQL'] }
+  { title: 'Languages & Core', skills: ['Python', 'Java', 'C++', 'JavaScript', 'DSA'] },
+  { title: 'Software Dev', skills: ['React.js', 'Node.js', 'HTML5/CSS3', 'OOP'] },
+  { title: 'AI & Backend', skills: ['Machine Learning', 'OpenCV', 'FastAPI/Flask', 'REST APIs'] },
+  { title: 'Database & Tools', skills: ['PostgreSQL', 'MongoDB', 'Git/GitHub', 'Linux'] }
 ];
 
 export const About = () => {
@@ -25,10 +25,10 @@ export const About = () => {
             </h2>
             <div className="space-y-6 text-gray-400 text-base md:text-lg leading-relaxed font-sans">
               <p>
-                I am a Computer Science Engineering student with hands-on experience in full-stack web development, database management, and software engineering principles. My background is rooted in a deep curiosity for how digital systems operate at scale.
+                I am a foundational tech talent and aspiring Software & AI Engineer with a strong command of Data Structures, Algorithms, and scalable Full-Stack Development. I am an active competitive programmer adept at optimizing complex solutions under tight constraints.
               </p>
               <p>
-                I am passionate about building scalable applications, solving real-world problems, and continuously learning modern technologies. My approach blends an analytical problem-solving mindset with a dedication to collaborative teamwork and iterative development.
+                Experienced in developing robust web architectures and integrating predictive machine learning models, I am highly motivated to leverage AI and engineering capabilities in hyper-scale environments to build product-oriented solutions for millions of users.
               </p>
             </div>
           </motion.div>
@@ -46,7 +46,8 @@ export const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="glass-card p-6 rounded-2xl"
+                whileHover={{ y: -8, scale: 1.02, boxShadow: "0 20px 40px -10px rgba(0,0,0,0.5)" }}
+                className="glass-card p-6 rounded-2xl cursor-pointer transition-shadow"
               >
                 <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center mb-4">
                   <div className="w-4 h-4 rounded-full bg-gradient-to-tr from-accent to-purple-500" />

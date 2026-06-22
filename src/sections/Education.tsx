@@ -14,7 +14,10 @@ export const Education = () => {
             Education <span className="gradient-text">&</span> Experience.
           </h2>
           
-          <div className="glass-card p-8 rounded-3xl relative overflow-hidden">
+          <motion.div 
+            whileHover={{ y: -8, boxShadow: "0 20px 40px -10px rgba(0,0,0,0.5)" }}
+            className="glass-card p-8 rounded-3xl relative overflow-hidden transition-shadow"
+          >
             <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-accent to-purple-500" />
             <span className="inline-block px-3 py-1 bg-white/10 text-xs font-medium text-white rounded-full mb-4">Class of 2028</span>
             <h3 className="text-xl md:text-2xl font-display font-bold text-white mb-2">

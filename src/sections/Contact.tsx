@@ -72,6 +72,10 @@ export const Contact = () => {
               <a href="mailto:srimankumar06@gmail.com" className="hover:text-white transition-colors">srimankumar06@gmail.com</a>
             </div>
             <div className="flex items-center gap-2">
+              <span className="text-gray-300">📞</span>
+              <a href="tel:+916381876020" className="hover:text-white transition-colors">+91-6381876020</a>
+            </div>
+            <div className="flex items-center gap-2">
               <MapPin size={16} className="text-gray-300" />
               <span>Tamil Nadu, India</span>
             </div>
