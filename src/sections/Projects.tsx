@@ -177,7 +177,7 @@ const SpotlightCard = ({ project, index }: { project: any; index: number }) => {
 
         {/* Tags — Monospace blocks */}
         <div className="relative z-10 flex flex-wrap gap-2 mt-auto" style={{ transform: 'translateZ(5px)' }}>
-          {project.tags.map((tag: string, i: number) => (
+          {project.tags.map((tag: string) => (
             <span
               key={tag}
               className="text-[11px] font-mono font-medium text-gray-400 bg-white/5 border border-white/10 px-2.5 py-1 rounded-md transition-colors group-hover:border-white/20 group-hover:text-white"
