@@ -93,6 +93,7 @@ const SpotlightCard = ({ project, index }: { project: any; index: number }) => {
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onClick={() => window.open('https://codolio.com/profile/Sriman_Kumar_V/devStats/github', '_blank')}
       style={{ rotateX, rotateY, transformStyle: 'preserve-3d', perspective: '1200px' }}
       className="group relative h-full cursor-pointer"
     >
@@ -140,13 +141,13 @@ const SpotlightCard = ({ project, index }: { project: any; index: number }) => {
 
           <div className="flex gap-2 text-gray-500">
             {project.githubUrl && (
-              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer"
+              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}
                 className="p-2 rounded-lg hover:bg-white/10 hover:text-white transition-all duration-200 magnetic">
                 <FaGithub size={18} />
               </a>
             )}
             {project.liveUrl && (
-              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer"
+              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}
                 className="p-2 rounded-lg hover:bg-white/10 hover:text-white transition-all duration-200 magnetic">
                 <ExternalLink size={18} />
               </a>
