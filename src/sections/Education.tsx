@@ -35,7 +35,7 @@ export const Education = () => {
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
 
         <motion.div
